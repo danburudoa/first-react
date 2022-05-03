@@ -5,7 +5,7 @@ export const App = () => {
 
   const contentStyle = {
     color: "blue",
-    fontSize: "20px"
+    fontSize: "18px"
   }
 
   return (
