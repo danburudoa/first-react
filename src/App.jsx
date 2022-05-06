@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { ColoredMessage } from "./components/ColoredMessage";
+import { Child1 } from "./components/Child1";
+import { Child4 }  from "./components/Child4";
 
 export const App = () => {
-  // stateの定義
+  console.log("再レンダリング");
+
   //stateの初期値を定義している。
   const [num, setNum] = useState(0);  
 
@@ -18,6 +21,8 @@ export const App = () => {
       <ColoredMessage color="pink">元気です！</ColoredMessage>
       <button onClick={onClickButton}>ボタン</button>
       <p>{num}</p>
+      <Child1 />
+      <Child4 />
     </>
   );
 };
