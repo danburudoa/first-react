@@ -1,34 +1,20 @@
 // importしている要素は、それがそのページの子コンポーネントを意味している。
-//
-import { useState, memo, useCallback } from "react";
-import { ColoredMessage } from "./components/ColoredMessage";
-import { Child1 } from "./components/Child1";
-import { Child4 }  from "./components/Child4";
+import { useState } from "react";
+import { Card } from "./components/Card";
 
-export const App = memo(() => {
-  console.log("再レンダリング");
+export const App = () => {
+  // 管理者フラグ
+  const [isAdmin, setIsAdmin] = useState(false);
 
-  //stateの初期値を定義している。
-  const [num, setNum] = useState(0);  
-
-  // ボタンを押した時に、stateをカウントアップ。
-  const onClickButton = () => {
-    setNum(num + 1);
-  }
-
-  const onClickReset = useCallback(() => {
-    setNum(0);
-  }, []); 
-
+  // [切り替え]押下時
+  const onClickSwitch = () => setIsAdmin(!isAdmin);
+console.log(!isAdmin);
   return (
-    <>
-      <h1 style={{ color: "red" }}>こんにちは！</h1>
-      <ColoredMessage color="blue">お元気ですか？</ColoredMessage>
-      <ColoredMessage color="pink">元気です！</ColoredMessage>
-      <button onClick={onClickButton}>ボタン</button>
-      <p>{num}</p>
-      <Child1 onClickReset={onClickReset} />
-      <Child4 />
-    </>
+    <div>
+      {/* 管理者フラグがtrueの時とそれ以外で文字を出しわけ */}
+      { isAdmin ? <span>管理者です</span> : <span>管理者以外です</span> }
+      <button onClick={onClickSwitch}>切り替え</button>
+      <Card isAdmin={isAdmin} />
+    </div>
   );
-});
+};
