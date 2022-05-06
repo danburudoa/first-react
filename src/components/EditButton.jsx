@@ -11,12 +11,9 @@ const style = {
 };
 
 export const EditButton = props => {
-  const { isAdmin } = props;
+  // Context内のisAdminを取得
+  const { isAdmin } = useContext(AdminFlagContext);
 
-  // useContextの引数に参照するContextを指定する
-  const contextValue = useContext(AdminFlagContext);
-  console.log(contextValue); // {sampleValue: "テスト"}
-  
   return (
     <button style={style} disabled={!isAdmin}>
       編集
