@@ -1,9 +1,11 @@
-import { useState } from "react";
+// importしている要素は、それがそのページの子コンポーネントを意味している。
+//
+import { useState, memo } from "react";
 import { ColoredMessage } from "./components/ColoredMessage";
 import { Child1 } from "./components/Child1";
 import { Child4 }  from "./components/Child4";
 
-export const App = () => {
+export const App = memo(() => {
   console.log("再レンダリング");
 
   //stateの初期値を定義している。
@@ -25,4 +27,4 @@ export const App = () => {
       <Child4 />
     </>
   );
-};
+});
