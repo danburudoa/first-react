@@ -1,6 +1,6 @@
 // importしている要素は、それがそのページの子コンポーネントを意味している。
 //
-import { useState, memo } from "react";
+import { useState, memo, useCallback } from "react";
 import { ColoredMessage } from "./components/ColoredMessage";
 import { Child1 } from "./components/Child1";
 import { Child4 }  from "./components/Child4";
@@ -16,6 +16,10 @@ export const App = memo(() => {
     setNum(num + 1);
   }
 
+  const onClickReset = useCallback(() => {
+    setNum(0);
+  }, []); 
+
   return (
     <>
       <h1 style={{ color: "red" }}>こんにちは！</h1>
@@ -23,7 +27,7 @@ export const App = memo(() => {
       <ColoredMessage color="pink">元気です！</ColoredMessage>
       <button onClick={onClickButton}>ボタン</button>
       <p>{num}</p>
-      <Child1 />
+      <Child1 onClickReset={onClickReset} />
       <Child4 />
     </>
   );
