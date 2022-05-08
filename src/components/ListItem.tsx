@@ -1,13 +1,8 @@
-// Propsの型を定義
-type User = {
-  id: number;
-  name: string;
-  age: number;
-  personalColor: string;
-}
+import type { FC } from "react";
+import type { User } from "../types/user";
 
 // Propsに型を指定
-export const ListItem = (props: User) => {
+export const ListItem: FC<User> = props => {
   const { id, name, age, personalColor } = props;
 
   return (
